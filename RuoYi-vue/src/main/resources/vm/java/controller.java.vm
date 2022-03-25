@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ruoyi.framework.aspectj.lang.annotation.Log;
 import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
 import ${packageName}.domain.${ClassName};
-import ${packageName}.service.I${ClassName}Service;
+import ${packageName}.service.${ClassName}Service;
 import com.ruoyi.framework.web.controller.BaseController;
 import com.ruoyi.framework.web.domain.AjaxResult;
 import com.ruoyi.common.utils.poi.ExcelUtil;
@@ -25,17 +25,18 @@ import com.ruoyi.framework.web.page.TableDataInfo;
 #end
 
 /**
- * ${functionName}Controller
- * 
- * @author ${author}
- * @date ${datetime}
+ * @author 终于白发始于青丝
+ * @create ${datetime}
+ * @Version 1.0
+ * @ClassName ${ClassName}Controller
+ * @Description 类方法说明：${functionName}
  */
 @RestController
-@RequestMapping("/${moduleName}/${businessName}")
-public class ${ClassName}Controller extends BaseController
-{
+@RequestMapping("/${className}")
+public class ${ClassName}Controller {
+
     @Autowired
-    private I${ClassName}Service ${className}Service;
+    private ${ClassName}Service ${className}Service;
 
     /**
      * 查询${functionName}列表

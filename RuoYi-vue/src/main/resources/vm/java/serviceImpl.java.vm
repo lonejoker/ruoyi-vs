@@ -17,23 +17,30 @@ import ${packageName}.domain.${subClassName};
 #end
 import ${packageName}.mapper.${ClassName}Mapper;
 import ${packageName}.domain.${ClassName};
-import ${packageName}.service.I${ClassName}Service;
+import ${packageName}.service.${ClassName}Service;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import cn.hutool.core.date.DateUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 /**
- * ${functionName}Service业务层处理
- * 
- * @author ${author}
- * @date ${datetime}
+ * @author 终于白发始于青丝
+ * @create ${datetime}
+ * @Version 1.0
+ * @ClassName ${ClassName}ServiceImpl
+ * @Description 类方法说明：${functionName}
  */
 @Service
-public class ${ClassName}ServiceImpl implements I${ClassName}Service 
-{
+public class ${ClassName}ServiceImpl extends ServiceImpl<${ClassName}Mapper,${ClassName}> implements ${ClassName}Service {
+
     @Autowired
     private ${ClassName}Mapper ${className}Mapper;
 
     /**
      * 查询${functionName}
-     * 
      * @param ${pkColumn.javaField} ${functionName}主键
      * @return ${functionName}
      */
@@ -45,7 +52,6 @@ public class ${ClassName}ServiceImpl implements I${ClassName}Service
 
     /**
      * 查询${functionName}列表
-     * 
      * @param ${className} ${functionName}
      * @return ${functionName}
      */
@@ -57,7 +63,6 @@ public class ${ClassName}ServiceImpl implements I${ClassName}Service
 
     /**
      * 新增${functionName}
-     * 
      * @param ${className} ${functionName}
      * @return 结果
      */
@@ -83,7 +88,6 @@ public class ${ClassName}ServiceImpl implements I${ClassName}Service
 
     /**
      * 修改${functionName}
-     * 
      * @param ${className} ${functionName}
      * @return 结果
      */

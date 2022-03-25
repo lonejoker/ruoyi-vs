@@ -5,86 +5,106 @@ import ${packageName}.domain.${ClassName};
 #if($table.sub)
 import ${packageName}.domain.${subClassName};
 #end
+import org.apache.ibatis.annotations.Mapper;
 
 /**
- * ${functionName}Mapper接口
- * 
- * @author ${author}
- * @date ${datetime}
+ * @author 终于白发始于青丝
+ * @create ${datetime}
+ * @Version 1.0
+ * @ClassName ${ClassName}Mapper
+ * @Description 类方法说明：${functionName}
  */
-public interface ${ClassName}Mapper 
-{
+@Mapper
+public interface ${ClassName}Mapper {
+
     /**
-     * 查询${functionName}
-     * 
-     * @param ${pkColumn.javaField} ${functionName}主键
-     * @return ${functionName}
-     */
+    * @author 终于白发始于青丝
+    * @Methodname select${ClassName}By${pkColumn.capJavaField}
+    * @Description 类方法说明：查询${functionName}
+    * @Return 返回值：${functionName}
+    * @Params  ${pkColumn.javaField}
+    * @Date 2022/3/25 上午 9:08
+    */
     public ${ClassName} select${ClassName}By${pkColumn.capJavaField}(${pkColumn.javaType} ${pkColumn.javaField});
 
     /**
-     * 查询${functionName}列表
-     * 
-     * @param ${className} ${functionName}
-     * @return ${functionName}集合
+     * @author 终于白发始于青丝
+     * @Methodname select${ClassName}List
+     * @Description 类方法说明：查询${functionName}列表
+     * @Return 返回值：${functionName}集合
+     * @Params  ${className}
+     * @Date 2022/3/25 上午 9:08
      */
     public List<${ClassName}> select${ClassName}List(${ClassName} ${className});
 
     /**
-     * 新增${functionName}
-     * 
-     * @param ${className} ${functionName}
-     * @return 结果
+     * @author 终于白发始于青丝
+     * @Methodname insert${ClassName}
+     * @Description 类方法说明：新增${functionName}
+     * @Return 返回值：结果
+     * @Params  ${className}
+     * @Date 2022/3/25 上午 9:08
      */
     public int insert${ClassName}(${ClassName} ${className});
 
     /**
-     * 修改${functionName}
-     * 
-     * @param ${className} ${functionName}
-     * @return 结果
+     * @author 终于白发始于青丝
+     * @Methodname update${ClassName}
+     * @Description 类方法说明：修改${functionName}
+     * @Return 返回值：结果
+     * @Params  ${className}
+     * @Date 2022/3/25 上午 9:08
      */
     public int update${ClassName}(${ClassName} ${className});
 
     /**
-     * 删除${functionName}
-     * 
-     * @param ${pkColumn.javaField} ${functionName}主键
-     * @return 结果
+     * @author 终于白发始于青丝
+     * @Methodname delete${ClassName}By${pkColumn.capJavaField}
+     * @Description 类方法说明：删除${functionName}
+     * @Return 返回值：结果
+     * @Params ${pkColumn.javaField}
+     * @Date 2022/3/25 上午 9:08
      */
     public int delete${ClassName}By${pkColumn.capJavaField}(${pkColumn.javaType} ${pkColumn.javaField});
 
     /**
-     * 批量删除${functionName}
-     * 
-     * @param ${pkColumn.javaField}s 需要删除的数据主键集合
-     * @return 结果
+     * @author 终于白发始于青丝
+     * @Methodname delete${ClassName}By${pkColumn.capJavaField}s
+     * @Description 类方法说明：批量删除${functionName}
+     * @Return 返回值：结果
+     * @Params ${pkColumn.javaField}s 需要删除的数据主键集合
+     * @Date 2022/3/25 上午 9:08
      */
     public int delete${ClassName}By${pkColumn.capJavaField}s(${pkColumn.javaType}[] ${pkColumn.javaField}s);
 #if($table.sub)
 
     /**
-     * 批量删除${subTable.functionName}
-     * 
-     * @param ${pkColumn.javaField}s 需要删除的数据主键集合
-     * @return 结果
+     * @author 终于白发始于青丝
+     * @Methodname delete${subClassName}By${subTableFkClassName}s
+     * @Description 类方法说明：批量删除${subTable.functionName}
+     * @Return 返回值：结果
+     * @Params ${pkColumn.javaField}s 需要删除的数据主键集合
+     * @Date 2022/3/25 上午 9:08
      */
     public int delete${subClassName}By${subTableFkClassName}s(${pkColumn.javaType}[] ${pkColumn.javaField}s);
-    
-    /**
-     * 批量新增${subTable.functionName}
-     * 
-     * @param ${subclassName}List ${subTable.functionName}列表
-     * @return 结果
-     */
-    public int batch${subClassName}(List<${subClassName}> ${subclassName}List);
-    
 
     /**
-     * 通过${functionName}主键删除${subTable.functionName}信息
-     * 
-     * @param ${pkColumn.javaField} ${functionName}ID
-     * @return 结果
+     * @author 终于白发始于青丝
+     * @Methodname batch${subClassName}
+     * @Description 类方法说明：批量新增${subTable.functionName}
+     * @Return 返回值：结果
+     * @Params ${subclassName}List ${subTable.functionName}列表
+     * @Date 2022/3/25 上午 9:08
+     */
+    public int batch${subClassName}(List<${subClassName}> ${subclassName}List);
+
+    /**
+     * @author 终于白发始于青丝
+     * @Methodname delete${subClassName}By${subTableFkClassName}
+     * @Description 类方法说明：通过${functionName}主键删除${subTable.functionName}信息
+     * @Return 返回值：结果
+     * @Params ${pkColumn.javaField} ${functionName}ID
+     * @Date 2022/3/25 上午 9:08
      */
     public int delete${subClassName}By${subTableFkClassName}(${pkColumn.javaType} ${pkColumn.javaField});
 #end
