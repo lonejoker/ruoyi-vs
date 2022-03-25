@@ -1,6 +1,7 @@
 package com.ruoyi.common.utils.job;
 
 import java.util.Date;
+
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -17,12 +18,12 @@ import com.ruoyi.project.monitor.domain.SysJobLog;
 import com.ruoyi.project.monitor.service.ISysJobLogService;
 
 /**
- * 抽象quartz调用
- *
- * @author ruoyi
+ * @author 终于白发始于青丝
+ * @Classname AbstractQuartzJob
+ * @Description 类方法说明：抽象quartz调用
+ * @Date 2022/3/25 下午 14:20
  */
-public abstract class AbstractQuartzJob implements Job
-{
+public abstract class AbstractQuartzJob implements Job {
     private static final Logger log = LoggerFactory.getLogger(AbstractQuartzJob.class);
 
     /**
@@ -31,45 +32,45 @@ public abstract class AbstractQuartzJob implements Job
     private static ThreadLocal<Date> threadLocal = new ThreadLocal<>();
 
     @Override
-    public void execute(JobExecutionContext context) throws JobExecutionException
-    {
+    public void execute(JobExecutionContext context) throws JobExecutionException {
         SysJob sysJob = new SysJob();
         BeanUtils.copyBeanProp(sysJob, context.getMergedJobDataMap().get(ScheduleConstants.TASK_PROPERTIES));
-        try
-        {
+        try {
             before(context, sysJob);
-            if (sysJob != null)
-            {
+            if (sysJob != null) {
                 doExecute(context, sysJob);
             }
             after(context, sysJob, null);
-        }
-        catch (Exception e)
-        {
-            log.error("任务执行异常  - ：", e);
+        } catch (Exception e) {
+            log.error("任务执行异常  - ：" , e);
             after(context, sysJob, e);
         }
     }
 
     /**
-     * 执行前
-     *
-     * @param context 工作执行上下文对象
-     * @param sysJob 系统计划任务
+     * @author 终于白发始于青丝
+     * @Methodname before
+     * @Description 类方法说明：执行前
+     * @Return 返回值：void
+     * @Params org.quartz.JobExecutionContext context 工作执行上下文对象
+     * @Params com.ruoyi.project.monitor.domain.SysJob sysJob 系统计划任务
+     * @Date 2022/3/25 下午 14:20
      */
-    protected void before(JobExecutionContext context, SysJob sysJob)
-    {
+    protected void before(JobExecutionContext context, SysJob sysJob) {
         threadLocal.set(new Date());
     }
 
     /**
-     * 执行后
-     *
-     * @param context 工作执行上下文对象
-     * @param sysScheduleJob 系统计划任务
+     * @author 终于白发始于青丝
+     * @Methodname after
+     * @Description 类方法说明：执行后
+     * @Return 返回值：void
+     * @Params org.quartz.JobExecutionContext context 工作执行上下文对象
+     * @Params com.ruoyi.project.monitor.domain.SysJob sysJob 系统计划任务
+     * @Params java.lang.Exception e
+     * @Date 2022/3/25 下午 14:21
      */
-    protected void after(JobExecutionContext context, SysJob sysJob, Exception e)
-    {
+    protected void after(JobExecutionContext context, SysJob sysJob, Exception e) {
         Date startTime = threadLocal.get();
         threadLocal.remove();
 
@@ -80,15 +81,12 @@ public abstract class AbstractQuartzJob implements Job
         sysJobLog.setStartTime(startTime);
         sysJobLog.setStopTime(new Date());
         long runMs = sysJobLog.getStopTime().getTime() - sysJobLog.getStartTime().getTime();
-        sysJobLog.setJobMessage(sysJobLog.getJobName() + " 总共耗时：" + runMs + "毫秒");
-        if (e != null)
-        {
+        sysJobLog.setJobMessage(sysJobLog.getJobName() + " 总共耗时：" + runMs + "毫秒" );
+        if (e != null) {
             sysJobLog.setStatus(Constants.FAIL);
             String errorMsg = StringUtils.substring(ExceptionUtil.getExceptionMessage(e), 0, 2000);
             sysJobLog.setExceptionInfo(errorMsg);
-        }
-        else
-        {
+        } else {
             sysJobLog.setStatus(Constants.SUCCESS);
         }
 
@@ -97,11 +95,13 @@ public abstract class AbstractQuartzJob implements Job
     }
 
     /**
-     * 执行方法，由子类重载
-     *
-     * @param context 工作执行上下文对象
-     * @param sysJob 系统计划任务
-     * @throws Exception 执行过程中的异常
+     * @author 终于白发始于青丝
+     * @Methodname doExecute
+     * @Description 类方法说明：执行方法，由子类重载
+     * @Return 返回值：void
+     * @Params org.quartz.JobExecutionContext context 工作执行上下文对象
+     * @Params com.ruoyi.project.monitor.domain.SysJob sysJob 系统计划任务
+     * @Date 2022/3/25 下午 14:21
      */
     protected abstract void doExecute(JobExecutionContext context, SysJob sysJob) throws Exception;
 }

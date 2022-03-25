@@ -1,12 +1,12 @@
 package com.ruoyi.common.constant;
 
 /**
- * 任务调度通用常量
- * 
- * @author ruoyi
- */
-public class ScheduleConstants
-{
+* @author 终于白发始于青丝
+* @Classname ScheduleConstants
+* @Description 类方法说明：任务调度通用常量
+* @Date 2022/3/25 下午 12:43
+*/
+public class ScheduleConstants {
     public static final String TASK_CLASS_NAME = "TASK_CLASS_NAME";
 
     /** 执行目标key */
@@ -24,26 +24,23 @@ public class ScheduleConstants
     /** 不触发立即执行 */
     public static final String MISFIRE_DO_NOTHING = "3";
 
-    public enum Status
-    {
+    public enum Status {
         /**
          * 正常
          */
-        NORMAL("0"),
+        NORMAL("0" ),
         /**
          * 暂停
          */
-        PAUSE("1");
+        PAUSE("1" );
 
         private String value;
 
-        private Status(String value)
-        {
+        private Status(String value) {
             this.value = value;
         }
 
-        public String getValue()
-        {
+        public String getValue() {
             return value;
         }
     }

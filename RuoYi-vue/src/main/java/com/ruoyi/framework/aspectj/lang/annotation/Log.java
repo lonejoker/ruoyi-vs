@@ -5,20 +5,20 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
 import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
 import com.ruoyi.framework.aspectj.lang.enums.OperatorType;
 
 /**
- * 自定义操作日志记录注解
- * 
- * @author ruoyi
- *
- */
-@Target({ ElementType.PARAMETER, ElementType.METHOD })
+* @author 终于白发始于青丝
+* @Classname Log
+* @Description 类方法说明：自定义操作日志记录注解
+* @Date 2022/3/25 下午 14:46
+*/
+@Target({ElementType.PARAMETER, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Log
-{
+public @interface Log {
     /**
      * 模块 
      */

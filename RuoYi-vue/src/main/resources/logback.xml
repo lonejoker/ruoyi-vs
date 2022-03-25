@@ -168,7 +168,7 @@
 	<!-- 4. 最终的策略 -->
 	<!-- 4.1 开发环境:打印控制台-->
 	<!--  <springProfile name="dev">-->
-	<logger name="com.xiaobai.controller" level="debug"/><!-- 修改此处扫描包名 -->
+	<logger name="com.ruoyi" level="debug"/><!-- 修改此处扫描包名 -->
 	<!--  </springProfile>-->
 
 	<root level="info">

@@ -1,12 +1,12 @@
 package com.ruoyi.common.constant;
 
 /**
- * 用户常量信息
- * 
- * @author ruoyi
- */
-public class UserConstants
-{
+* @author 终于白发始于青丝
+* @Classname UserConstants
+* @Description 类方法说明：用户常量信息
+* @Date 2022/3/25 下午 12:43
+*/
+public class UserConstants {
     /**
      * 平台内系统用户的唯一标志
      */
@@ -53,7 +53,7 @@ public class UserConstants
 
     /** Layout组件标识 */
     public final static String LAYOUT = "Layout";
-    
+
     /** ParentView组件标识 */
     public final static String PARENT_VIEW = "ParentView";
 

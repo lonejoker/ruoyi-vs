@@ -7,15 +7,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 数据权限过滤注解
- * 
- * @author ruoyi
- */
+* @author 终于白发始于青丝
+* @Classname DataScope
+* @Description 类方法说明：数据权限过滤注解
+* @Date 2022/3/25 下午 14:45
+*/
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface DataScope
-{
+public @interface DataScope {
     /**
      * 部门表的别名
      */

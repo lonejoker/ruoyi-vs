@@ -3,6 +3,7 @@ package com.ruoyi.framework.aspectj;
 import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -21,14 +22,14 @@ import com.ruoyi.framework.aspectj.lang.annotation.RateLimiter;
 import com.ruoyi.framework.aspectj.lang.enums.LimitType;
 
 /**
- * 限流处理
- *
- * @author ruoyi
+ * @author 终于白发始于青丝
+ * @Classname RateLimiterAspect
+ * @Description 类方法说明：限流处理
+ * @Date 2022/3/25 下午 14:52
  */
 @Aspect
 @Component
-public class RateLimiterAspect
-{
+public class RateLimiterAspect {
     private static final Logger log = LoggerFactory.getLogger(RateLimiterAspect.class);
 
     private RedisTemplate<Object, Object> redisTemplate;
@@ -36,56 +37,45 @@ public class RateLimiterAspect
     private RedisScript<Long> limitScript;
 
     @Autowired
-    public void setRedisTemplate1(RedisTemplate<Object, Object> redisTemplate)
-    {
+    public void setRedisTemplate1(RedisTemplate<Object, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
     @Autowired
-    public void setLimitScript(RedisScript<Long> limitScript)
-    {
+    public void setLimitScript(RedisScript<Long> limitScript) {
         this.limitScript = limitScript;
     }
 
-    @Before("@annotation(rateLimiter)")
-    public void doBefore(JoinPoint point, RateLimiter rateLimiter) throws Throwable
-    {
+    @Before("@annotation(rateLimiter)" )
+    public void doBefore(JoinPoint point, RateLimiter rateLimiter) throws Throwable {
         String key = rateLimiter.key();
         int time = rateLimiter.time();
         int count = rateLimiter.count();
 
         String combineKey = getCombineKey(rateLimiter, point);
         List<Object> keys = Collections.singletonList(combineKey);
-        try
-        {
+        try {
             Long number = redisTemplate.execute(limitScript, keys, count, time);
-            if (StringUtils.isNull(number) || number.intValue() > count)
-            {
-                throw new ServiceException("访问过于频繁，请稍候再试");
+            if (StringUtils.isNull(number) || number.intValue() > count) {
+                throw new ServiceException("访问过于频繁，请稍候再试" );
             }
-            log.info("限制请求'{}',当前请求'{}',缓存key'{}'", count, number.intValue(), key);
-        }
-        catch (ServiceException e)
-        {
+            log.info("限制请求'{}',当前请求'{}',缓存key'{}'" , count, number.intValue(), key);
+        } catch (ServiceException e) {
             throw e;
-        }
-        catch (Exception e)
-        {
-            throw new RuntimeException("服务器限流异常，请稍候再试");
+        } catch (Exception e) {
+            throw new RuntimeException("服务器限流异常，请稍候再试" );
         }
     }
 
-    public String getCombineKey(RateLimiter rateLimiter, JoinPoint point)
-    {
+    public String getCombineKey(RateLimiter rateLimiter, JoinPoint point) {
         StringBuffer stringBuffer = new StringBuffer(rateLimiter.key());
-        if (rateLimiter.limitType() == LimitType.IP)
-        {
-            stringBuffer.append(IpUtils.getIpAddr(ServletUtils.getRequest())).append("-");
+        if (rateLimiter.limitType() == LimitType.IP) {
+            stringBuffer.append(IpUtils.getIpAddr(ServletUtils.getRequest())).append("-" );
         }
         MethodSignature signature = (MethodSignature) point.getSignature();
         Method method = signature.getMethod();
         Class<?> targetClass = method.getDeclaringClass();
-        stringBuffer.append(targetClass.getName()).append("-").append(method.getName());
+        stringBuffer.append(targetClass.getName()).append("-" ).append(method.getName());
         return stringBuffer.toString();
     }
 }

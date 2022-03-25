@@ -1,12 +1,12 @@
 package com.ruoyi.framework.aspectj.lang.enums;
 
 /**
- * 业务操作类型
- * 
- * @author ruoyi
+ * @author 终于白发始于青丝
+ * @Classname BusinessType
+ * @Description 类方法说明：业务操作类型
+ * @Date 2022/3/25 下午 14:50
  */
-public enum BusinessType
-{
+public enum BusinessType {
     /**
      * 其它
      */
@@ -51,7 +51,7 @@ public enum BusinessType
      * 生成代码
      */
     GENCODE,
-    
+
     /**
      * 清空数据
      */

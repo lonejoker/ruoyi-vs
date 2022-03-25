@@ -1,13 +1,12 @@
 package com.ruoyi.framework.aspectj.lang.enums;
 
 /**
- * 限流类型
- *
- * @author ruoyi
+ * @author 终于白发始于青丝
+ * @Classname LimitType
+ * @Description 类方法说明：限流类型
+ * @Date 2022/3/25 下午 14:50
  */
-
-public enum LimitType
-{
+public enum LimitType {
     /**
      * 默认策略全局限流
      */

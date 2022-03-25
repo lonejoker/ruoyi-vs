@@ -1,6 +1,7 @@
 package com.ruoyi.framework.aspectj;
 
 import java.util.Objects;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,40 +17,34 @@ import com.ruoyi.framework.aspectj.lang.annotation.DataSource;
 import com.ruoyi.framework.datasource.DynamicDataSourceContextHolder;
 
 /**
- * 多数据源处理
- * 
- * @author ruoyi
+ * @author 终于白发始于青丝
+ * @Classname DataSourceAspect
+ * @Description 类方法说明：多数据源处理
+ * @Date 2022/3/25 下午 14:52
  */
 @Aspect
 @Order(1)
 @Component
-public class DataSourceAspect
-{
+public class DataSourceAspect {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @Pointcut("@annotation(com.ruoyi.framework.aspectj.lang.annotation.DataSource)"
-            + "|| @within(com.ruoyi.framework.aspectj.lang.annotation.DataSource)")
-    public void dsPointCut()
-    {
+            + "|| @within(com.ruoyi.framework.aspectj.lang.annotation.DataSource)" )
+    public void dsPointCut() {
 
     }
 
-    @Around("dsPointCut()")
-    public Object around(ProceedingJoinPoint point) throws Throwable
-    {
+    @Around("dsPointCut()" )
+    public Object around(ProceedingJoinPoint point) throws Throwable {
         DataSource dataSource = getDataSource(point);
 
-        if (StringUtils.isNotNull(dataSource))
-        {
+        if (StringUtils.isNotNull(dataSource)) {
             DynamicDataSourceContextHolder.setDataSourceType(dataSource.value().name());
         }
 
-        try
-        {
+        try {
             return point.proceed();
-        }
-        finally
-        {
+        } finally {
             // 销毁数据源 在执行方法之后
             DynamicDataSourceContextHolder.clearDataSourceType();
         }
@@ -58,12 +53,10 @@ public class DataSourceAspect
     /**
      * 获取需要切换的数据源
      */
-    public DataSource getDataSource(ProceedingJoinPoint point)
-    {
+    public DataSource getDataSource(ProceedingJoinPoint point) {
         MethodSignature signature = (MethodSignature) point.getSignature();
         DataSource dataSource = AnnotationUtils.findAnnotation(signature.getMethod(), DataSource.class);
-        if (Objects.nonNull(dataSource))
-        {
+        if (Objects.nonNull(dataSource)) {
             return dataSource;
         }
 

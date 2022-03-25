@@ -1,12 +1,12 @@
 package com.ruoyi.common.constant;
 
 /**
- * 返回状态码
- * 
- * @author ruoyi
+ * @author 终于白发始于青丝
+ * @Classname HttpStatus
+ * @Description 类方法说明：返回状态码
+ * @Date 2022/3/25 下午 12:42
  */
-public class HttpStatus
-{
+public class HttpStatus {
     /**
      * 操作成功
      */

@@ -8,18 +8,16 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 自定义xss校验注解
- * 
- * @author ruoyi
+ * @author 终于白发始于青丝
+ * @Classname Xss
+ * @Description 类方法说明：自定义xss校验注解
+ * @Date 2022/3/25 下午 13:31
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(value = { ElementType.METHOD, ElementType.FIELD, ElementType.CONSTRUCTOR, ElementType.PARAMETER })
-@Constraint(validatedBy = { XssValidator.class })
-public @interface Xss
-{
-    String message()
-
-    default "不允许任何脚本运行";
+@Target(value = {ElementType.METHOD, ElementType.FIELD, ElementType.CONSTRUCTOR, ElementType.PARAMETER})
+@Constraint(validatedBy = {XssValidator.class})
+public @interface Xss {
+    String message() default "不允许任何脚本运行";
 
     Class<?>[] groups() default {};
 

@@ -8,17 +8,16 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 自定义注解防止表单重复提交
- * 
- * @author ruoyi
- *
+ * @author 终于白发始于青丝
+ * @Classname RepeatSubmit
+ * @Description 类方法说明：自定义注解防止表单重复提交
+ * @Date 2022/3/25 下午 14:56
  */
 @Inherited
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface RepeatSubmit
-{
+public @interface RepeatSubmit {
     /**
      * 间隔时间(ms)，小于此时间视为重复提交
      */

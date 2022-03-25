@@ -3,12 +3,12 @@ package com.ruoyi.framework.web.page;
 import com.ruoyi.common.utils.ServletUtils;
 
 /**
- * 表格数据处理
- * 
- * @author ruoyi
- */
-public class TableSupport
-{
+* @author 终于白发始于青丝
+* @Classname TableSupport
+* @Description 类方法说明：表格数据处理
+* @Date 2022/3/25 下午 14:59
+*/
+public class TableSupport {
     /**
      * 当前记录起始索引
      */
@@ -37,8 +37,7 @@ public class TableSupport
     /**
      * 封装分页对象
      */
-    public static PageDomain getPageDomain()
-    {
+    public static PageDomain getPageDomain() {
         PageDomain pageDomain = new PageDomain();
         pageDomain.setPageNum(ServletUtils.getParameterToInt(PAGE_NUM));
         pageDomain.setPageSize(ServletUtils.getParameterToInt(PAGE_SIZE));
@@ -48,8 +47,7 @@ public class TableSupport
         return pageDomain;
     }
 
-    public static PageDomain buildPageRequest()
-    {
+    public static PageDomain buildPageRequest() {
         return getPageDomain();
     }
 }

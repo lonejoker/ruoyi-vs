@@ -4,10 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 数据源切换处理
- * 
- * @author ruoyi
- */
+* @author 终于白发始于青丝
+* @Classname DynamicDataSourceContextHolder
+* @Description 类方法说明：数据源切换处理
+* @Date 2022/3/25 下午 14:56
+*/
 public class DynamicDataSourceContextHolder
 {
     public static final Logger log = LoggerFactory.getLogger(DynamicDataSourceContextHolder.class);

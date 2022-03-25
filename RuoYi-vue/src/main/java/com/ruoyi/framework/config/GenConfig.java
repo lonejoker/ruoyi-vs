@@ -4,14 +4,14 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * 读取代码生成相关配置
- * 
- * @author ruoyi
+ * @author 终于白发始于青丝
+ * @Classname GenConfig
+ * @Description 类方法说明：读取代码生成相关配置
+ * @Date 2022/3/25 下午 14:54
  */
 @Component
-@ConfigurationProperties(prefix = "gen")
-public class GenConfig
-{
+@ConfigurationProperties(prefix = "gen" )
+public class GenConfig {
     /** 作者 */
     public static String author;
 
@@ -24,43 +24,35 @@ public class GenConfig
     /** 表前缀(类名不会包含表前缀) */
     public static String tablePrefix;
 
-    public static String getAuthor()
-    {
+    public static String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author)
-    {
+    public void setAuthor(String author) {
         GenConfig.author = author;
     }
 
-    public static String getPackageName()
-    {
+    public static String getPackageName() {
         return packageName;
     }
 
-    public void setPackageName(String packageName)
-    {
+    public void setPackageName(String packageName) {
         GenConfig.packageName = packageName;
     }
 
-    public static boolean getAutoRemovePre()
-    {
+    public static boolean getAutoRemovePre() {
         return autoRemovePre;
     }
 
-    public void setAutoRemovePre(boolean autoRemovePre)
-    {
+    public void setAutoRemovePre(boolean autoRemovePre) {
         GenConfig.autoRemovePre = autoRemovePre;
     }
 
-    public static String getTablePrefix()
-    {
+    public static String getTablePrefix() {
         return tablePrefix;
     }
 
-    public void setTablePrefix(String tablePrefix)
-    {
+    public void setTablePrefix(String tablePrefix) {
         GenConfig.tablePrefix = tablePrefix;
     }
 }

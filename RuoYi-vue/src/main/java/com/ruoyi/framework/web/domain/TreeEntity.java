@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Tree基类
- * 
- * @author ruoyi
- */
-public class TreeEntity extends BaseEntity
-{
+* @author 终于白发始于青丝
+* @Classname TreeEntity
+* @Description 类方法说明：Tree基类
+* @Date 2022/3/25 下午 15:00
+*/
+public class TreeEntity extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 父菜单名称 */
@@ -27,53 +27,43 @@ public class TreeEntity extends BaseEntity
     /** 子部门 */
     private List<?> children = new ArrayList<>();
 
-    public String getParentName()
-    {
+    public String getParentName() {
         return parentName;
     }
 
-    public void setParentName(String parentName)
-    {
+    public void setParentName(String parentName) {
         this.parentName = parentName;
     }
 
-    public Long getParentId()
-    {
+    public Long getParentId() {
         return parentId;
     }
 
-    public void setParentId(Long parentId)
-    {
+    public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
 
-    public Integer getOrderNum()
-    {
+    public Integer getOrderNum() {
         return orderNum;
     }
 
-    public void setOrderNum(Integer orderNum)
-    {
+    public void setOrderNum(Integer orderNum) {
         this.orderNum = orderNum;
     }
 
-    public String getAncestors()
-    {
+    public String getAncestors() {
         return ancestors;
     }
 
-    public void setAncestors(String ancestors)
-    {
+    public void setAncestors(String ancestors) {
         this.ancestors = ancestors;
     }
 
-    public List<?> getChildren()
-    {
+    public List<?> getChildren() {
         return children;
     }
 
-    public void setChildren(List<?> children)
-    {
+    public void setChildren(List<?> children) {
         this.children = children;
     }
 }

@@ -5,17 +5,18 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.math.BigDecimal;
+
 import com.ruoyi.common.utils.poi.ExcelHandlerAdapter;
 
 /**
- * 自定义导出Excel数据注解
- * 
- * @author ruoyi
+ * @author 终于白发始于青丝
+ * @Classname Excel
+ * @Description 类方法说明：自定义导出Excel数据注解
+ * @Date 2022/3/25 下午 14:46
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface Excel
-{
+public @interface Excel {
     /**
      * 导出时在excel中排序
      */
@@ -121,18 +122,15 @@ public @interface Excel
      */
     public String[] args() default {};
 
-    public enum Align
-    {
+    public enum Align {
         AUTO(0), LEFT(1), CENTER(2), RIGHT(3);
         private final int value;
 
-        Align(int value)
-        {
+        Align(int value) {
             this.value = value;
         }
 
-        public int value()
-        {
+        public int value() {
             return this.value;
         }
     }
@@ -142,34 +140,28 @@ public @interface Excel
      */
     Type type() default Type.ALL;
 
-    public enum Type
-    {
+    public enum Type {
         ALL(0), EXPORT(1), IMPORT(2);
         private final int value;
 
-        Type(int value)
-        {
+        Type(int value) {
             this.value = value;
         }
 
-        public int value()
-        {
+        public int value() {
             return this.value;
         }
     }
 
-    public enum ColumnType
-    {
+    public enum ColumnType {
         NUMERIC(0), STRING(1), IMAGE(2);
         private final int value;
 
-        ColumnType(int value)
-        {
+        ColumnType(int value) {
             this.value = value;
         }
 
-        public int value()
-        {
+        public int value() {
             return this.value;
         }
     }
